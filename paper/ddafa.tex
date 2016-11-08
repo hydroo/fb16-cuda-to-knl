@@ -1,0 +1,46 @@
+\chapter{Das DDAFA-Rekonstruktionsprogramm}
+
+Das Programm DDAFA (Dresden Accelerated FDK Algorithm) befindet sich seit November 2015 am Helmholtz-Zentrum Dresden-Rossendorf in der Entwicklung.
+Es löste dort ein internes Programm ab, das unter anderem auf MATLAB basierte, mit einem alten Borland C++ Compiler für Windows kompiliert wurde und
+ausschließlich auf der x86-Architektur (32-bit) lauffähig war. Die Entwicklung von DDAFA verfolgt daher drei primäre Ziele:
+
+\begin{itemize}
+\item hohe Performanz, sicherzustellen durch Ausnutzung von Parallelität,
+\item Portabilität auf andere Architekturen und Betriebssysteme, wobei das primäre Ziel Linux auf der x86-Architektur (64-bit) ist sowie
+\item einfache Wartbarkeit.
+\end{itemize}
+
+Die Erfüllung des ersten und vordringlichsten Ziels wird durch den Einsatz des NVIDIA\textregistered\ CUDA\textregistered\-Programmiermodells angestrebt,
+während sich die anderen beiden durch eine stark am C++11-Standard orientierte Programmierung sowie eine schlanke, modulare Programmstruktur ergeben.
+
+\section{Programmstruktur}
+
+Das zu lösende Problem lässt sich in die folgenden Teilprobleme zergliedern:
+
+\begin{enumerate}
+\item Wichtung der Projektionen
+\item Filterung der Projektionen
+\item Rückprojektion 
+\end{enumerate}
+
+Diese werden in den folgenden Abschnitten näher beschrieben.
+
+\subsection{Wichtung der Projektionen}
+
+Vor der gefilterten Rückprojektion müssen die Projektionen gewichtet werden. Dies geschieht für jedes Pixel einzeln nach der folgenden Formel:
+
+\fxnote{Formel und Begründung einfügen}
+
+\subsection{Filterung der Projektionen}
+
+Die gewichteten Projektionen müssen vor der Rückprojektion gefiltert werden. Zu diesem Zweck werden sie zunächst Fourier-transformiert. Im komplexen
+Raum wird der (ebenfalls transformierte) Filter auf das transformierte Bild angewendet und das Ergebnis anschließend zurück transformiert.
+
+\fxnote{Filterbeschreibung}
+
+\subsection{Rückprojektion mit der FDK-Methode}
+
+Die gefilterten Projektionen werden im letzten Schritt zurückprojiziert. Für diesen Zweck wird der von Feldkamp, Davis und Kress (FDK) vorgestellte
+Algorithmus verwendet. Jedes Voxel im Zielvolumen kann dabei unabhängig von den anderen Voxeln berechnet werden.
+
+\fxfatal[draft]{Längere Beschreibung und Quellen}
