@@ -72,6 +72,13 @@
   \@belegtrue
 }
 
+% Forschungsbeleg (INF-PM-FPG)-Vorlage
+\newif\if@forschungsbeleg
+\@forschungsbelegfalse
+\DeclareOption{forschungsbeleg}{%
+  \@forschungsbelegtrue
+}
+
 % Diplom Inf-Vorlage
 \newif\if@diplominf
 \@diplominffalse
@@ -267,6 +274,9 @@
 \if@beleg
   \def\@isreport{1}
 \fi
+\if@forschungsbeleg
+  \def\@isreport{1}
+\fi
 \if@diplominf
   \def\@isreport{1}
   \def\@isdiploma{1}
@@ -358,6 +368,10 @@ Wissenschaftlichen Hochleistungsrechnen''}
 
 \if@beleg%
 \renewcommand{\titleheader}[0]{Gro{\ss}er Beleg}
+\fi
+
+\if@forschungsbeleg%
+\renewcommand{\titleheader}[0]{Belegarbeit f\"{u}r das Profilmodul\\ \glqq Forschungsprojekt Grundlagen (INF-PM-FPG)\grqq}
 \fi
 
 \if@female

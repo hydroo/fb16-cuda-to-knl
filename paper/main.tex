@@ -1,18 +1,26 @@
-\documentclass[utf8,plainreport,german]{zihpub}
+\documentclass[utf8,forschungsbeleg,german]{zihpub}
 
 \usepackage{fixme}
 \usepackage{textcomp}
 
 \author{Jan Stephan}
-\title{Optimierung eines CT-Rekonstruktions-Programms\\ im Hinblick auf die effiziente Nutzung eines Intel\textregistered\ Xeon Phi\texttrademark\ }
+\title{Optimierung eines CT-Rekonstruktions-Programms\\ im Hinblick auf die effiziente Nutzung eines\\ Intel\textregistered\ Xeon Phi\texttrademark\ }
+\matno{3755136}
+\betreuer{\hspace{0.15mm}Dr.-Ing. André Bieberle \\
+          \qquad \qquad Ronny Brendel \\
+          \qquad \qquad Olaf Krzikalla}
+\date{31. März 2017}
+\acknowledgments{Vielleicht Andre lieber hier nennen?}
+\bibfiles{bibliography.bib}
  
 \begin{document}
 
-\chapter{Einleitung}
-\include{ddafa}
-\chapter{Umsetzung mit OpenMP}
-\chapter{Umsetzung mit Intel\textregistered\-Bibliotheken}
-\chapter{Performancevergleich der verwendeten Ansätze}
-\chapter{Fazit}
+\include{einleitung}
+\include{grundlagen}
+\include{umsetzung}
+\include{leistungsanalyse}
+\include{fazit}
 
 \end{document}
+
+% vim: set ft=tex:
